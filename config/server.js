@@ -12,11 +12,12 @@ app.set('view engine', 'ejs');
  * Set view directory
  */
 app.set('views', './app/views');
-/**
- * Using body parser to solve requests
- */
-app.use(bodyParser.urlencoded({extended: true}));
 
+// Set static files
+app.use(express.static('./app/public'));
+// Set body parser
+app.use(bodyParser.urlencoded({extended: true}));
+// Set validators
 app.use(validator());
 /**
  * Set the autoload to routes
