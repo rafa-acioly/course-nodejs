@@ -1,13 +1,18 @@
 /**
  * Adicionar noticia
  */
-module.exports = function(app) {
-    app.get('/formulario', function(request, response) {
+module.exports = function(application) {
+    application.get('/formulario', function(request, response) {
         response.render('admin/form_add_noticia');
     });
 
-    app.post('/noticias/salvar', function(request, response) {
-    	var noticia = request.body;
-    	response.send(noticia);
+    application.post('/noticias/salvar', function(request, response) {
+    	var data = request.body;
+    	var connection = application.config.db();
+    	var noticiasModel = application.app.models.noticiasModel;
+
+    	noticiasModel.salvarNoticia(data, connection, function(error, result) {
+    		response.redirect('/noticias');
+    	});
     });
 };

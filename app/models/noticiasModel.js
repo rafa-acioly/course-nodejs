@@ -7,5 +7,9 @@ module.exports = function(app) {
 		connection.query('select * from noticia where id = 1', callback);
 	}
 
+	this.salvarNoticia = function(data, connection, callback) {
+		connection.query('insert into noticias set ?', data, callback);
+	}
+
 	return this;
 }
