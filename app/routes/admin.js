@@ -3,7 +3,7 @@
  */
 module.exports = function(application) {
     application.get('/formulario', function(request, response) {
-        response.render('admin/form_add_noticia', {validation: ''});
+        response.render('admin/form_add_noticia', {validationFail: '', dados: ''});
     });
 
     application.post('/noticias/salvar', function(request, response) {
@@ -17,7 +17,7 @@ module.exports = function(application) {
         var errors = request.validationErrors();
         console.log(errors);
         if (errors) {
-            response.render('admin/form_add_noticia', {validation: errors});
+            response.render('admin/form_add_noticia', {validationFail: errors, dados: data});
             return;
         }
 
