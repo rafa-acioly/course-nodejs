@@ -9,7 +9,7 @@ module.exports = function(application) {
     application.post('/noticias/salvar', function(request, response) {
     	var data = request.body;
     	var connection = application.config.db();
-    	var noticiasModel = application.app.models.noticiasModel;
+    	var noticiasModel = new application.app.models.NoticiasDAO(connection);
 
     	noticiasModel.salvarNoticia(data, connection, function(error, result) {
     		response.redirect('/noticias');
