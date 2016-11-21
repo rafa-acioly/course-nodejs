@@ -1,6 +1,7 @@
 var express = require('express');
 var consign = require('consign');
 var bodyParser = require('body-parser');
+var validator = require('express-validator');
 var app = express();
 
 /**
@@ -15,6 +16,8 @@ app.set('views', './app/views');
  * Using body parser to solve requests
  */
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(validator());
 /**
  * Set the autoload to routes
  */
