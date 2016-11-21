@@ -1,14 +1,12 @@
 /**
- * Listagem de noticias
+ * News routes
  */
 module.exports = function(application) {
     application.get('/noticias', function(request, response) {
+    	application.app.controllers.Noticias.getAll(application, request, response);
+    });
 
-    	var connection = application.config.db();
-    	var noticiasModel = new application.app.models.NoticiasDAO(connection);
-
-    	noticiasModel.getNoticias(function(error, result) {
-    		response.render('noticias/noticias', {noticias: result});
-    	});
+    application.get('/noticia', function(request, response) {
+    	application.app.controllers.Noticias.findOne(application, request, response);
     });
 };

@@ -1,8 +1,8 @@
 /**
- * Home
+ * Home routes
  */
-module.exports = function(app) {
-    app.get('/', function(request, response) {
-        response.render('home/index');
+module.exports = function(application) {
+    application.get('/', function(request, response) {
+        application.app.controllers.Home.index(application, request, response);
     });    
 };
